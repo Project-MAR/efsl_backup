@@ -1,0 +1,27 @@
+\subsection{Project aims}
+The EFSL project aims to create a library for filesystems, to be used on 
+various embedded systems. Currently we support the Microsoft FAT filesystem 
+family. It is our intention to create pure ANSI C code that compiles on 
+anything that bears the name 'C compiler'. We don't make assumptions about 
+endianness or how the memory alignement is arranged on your architecture.
+\newline\newline
+Adding code for your specific hardware is straightforward, just add code that 
+fetches or writes a 512 byte sector, and the library will do the rest. 
+Existing code can offcourse be used, own code is only required when you 
+have hardware for which no target exists. 
+\subsection{Project status}
+Efsl currently supports FAT12, FAT16 and FAT32. Read and write has been tested 
+and is stable. Efsl runs on PC (GNU/Linux, development enviroment), 
+TMS C6000 DSP's from Texas instruments, and ATMega's from Atmel.
+You can use this code with as little as 1.5 kilobyte RAM, however if you have 
+more at your disposal, an infinite amount can be used as cache memory. 
+The more memory you commit, the better the performance will be.
+%\newline\newline
+%In order to minimise IO to the hardware 2 caching mechanism are in place on different layers. The first layer is the IO Manager which does "dumb" caching of sectors. This will offcourse work better if you have RAM to spare. The second level is higherup in the library, where some tricks are in place to minimise redundant reading of the FAT table (which is the primary bottleneck of the FAT filesystem, especially with hardware which has seek times).
+\subsection{License}
+This project is released under the Lesser General Public license, which 
+means that you may use the library and it's sourcecode for any purpose you want, 
+that you may link with it and use it commercially, but that ANY change to the 
+code must be released under the same license. That means, if you add hardware 
+suport, you share it, so that the community may benefit from access to all 
+kinds of hardware.
